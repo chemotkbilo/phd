@@ -153,8 +153,8 @@ See http://www.latex-project.org/lppl.txt
 \usepackage{phd-lowersections}
 \usepackage{phd-runningheads}
 \pagestyle{headings}
-\sethyperref
-\addbibresource{phd.bib}% Syntax f
+%\sethyperref
+%\addbibresource{phd.bib}% Syntax f
 \cxset{palette bbc}
 \begin{filecontents}{defaults-chapters}
 %%    General Defaults for Chapters
@@ -236,6 +236,7 @@ See http://www.latex-project.org/lppl.txt
        }
 \usepackage{makeidx}      
 \usepackage{phd-documentation}
+\usepackage{phd-pkgmanager}
 \makeindex
 \setcounter{tocdepth}{6}
 \usepackage{minitoc}
@@ -243,7 +244,7 @@ See http://www.latex-project.org/lppl.txt
 \begin{document}
 
 \parindent1em
-\coverpage{asia}{Book Design }{Camel Press}{HEADINGS}{DESIGN} 
+\coverpage{./images/asia}{Book Design }{Camel Press}{HEADINGS}{DESIGN} 
 \pagestyle{empty}
 %\coverpage{habtoor-city}{Delay Claim}{HLS-DSE/JV}{HABTOOR CITY}{MEP CLAIM} 
 \secondpage
@@ -281,14 +282,14 @@ See http://www.latex-project.org/lppl.txt
 %\cxset{chapter format=block}
 %\input{./sections/chapterdesign}
 %\input{./sections/lowerlevelheadings}
-\newfontfamily\aegean{Aegean.ttf}
+\newfontfamily\aegean{Aegean}
 \makeatletter
 %\@debugtrue
 
 \makeatother
 
 \DocInput{\jobname.dtx}
-\input{./tests/test-colorpalette}
+%\input{./tests/test-colorpalette}
 \input{./languages/ancient-and-historic-scripts}
 \nocite{*}
 \printbibliography
