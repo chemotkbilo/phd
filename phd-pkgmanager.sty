@@ -675,19 +675,6 @@ ball was her favorite plaything.}%
   }
   {}
 \ExplSyntaxOn
- \newif\ifST
- \newcommand\ST{\pkgname{stmaryrd}}
- \IfStyFileExists{stmaryrd}
-  {\STtrue
-   \save_symbol:{lightning}
-   \save_symbol:{bigtriangleup} \save_symbol:{bigtriangledown}
-   \RequirePackage{stmaryrd}
-   \restore_symbol:{ST}{lightning}
-   \restore_symbol:{ST}{bigtriangleup} \restore_symbol:{ST}{bigtriangledown}
-  }
-  {}
-\ExplSyntaxOff
-\ExplSyntaxOn
 \newif\ifXPFEIL
 \newcommand\XPFEIL{\pkgname{extpfeil}}
 \IfStyFileExists{extpfeils}
@@ -780,7 +767,7 @@ ball was her favorite plaything.}%
   \renewcommand{\mathfrak}[1]{\mbox{\fontencoding{U}\fontfamily{euf}\selectfont#1}}
 \fi
 \newif\ifUPGR
-    \RequirePackage[Symbol]{upgreek}
+\RequirePackage[Symbol]{upgreek}
 \ExplSyntaxOn
 \newif\ifMDOTS
 \newcommand\MDOTS{\pkgname{mathdots}}
@@ -1113,24 +1100,7 @@ ball was her favorite plaything.}%
    \restore_symbol:{MARV}{EUR}
   }
   {}
-\newif\ifESV\ESVfalse
-\newcommand\ESV{\pkgname{esvect}}
-\ExplSyntaxOff
-\IfStyFileExists{esvect}
-  {\ESVtrue
-   \RequirePackage{esvect}
-   \DeclareMathSymbol{\fldra}{\mathrel}{esvector}{'021}
-   \DeclareMathSymbol{\fldrb}{\mathrel}{esvector}{'022}
-   \DeclareMathSymbol{\fldrc}{\mathrel}{esvector}{'023}
-   \DeclareMathSymbol{\fldrd}{\mathrel}{esvector}{'024}
-   \DeclareMathSymbol{\fldre}{\mathrel}{esvector}{'025}
-   \DeclareMathSymbol{\fldrf}{\mathrel}{esvector}{'026}
-   \DeclareMathSymbol{\fldrg}{\mathrel}{esvector}{'027}
-   \DeclareMathSymbol{\fldrh}{\mathrel}{esvector}{'030}
-  }
-  {}
-
-  \RequirePackage{mhchem}
+  \RequirePackage[version=4]{mhchem}
   \RequirePackage{chemfig}
 
 \newif\ifMAN
@@ -1178,6 +1148,7 @@ ball was her favorite plaything.}%
   }
   {}
 \ExplSyntaxOff
+
 \newif\ifUTILD
 \newcommand\UTILD{\pkgname{undertilde}}
 \IfStyFileExists{undertilde}
@@ -1272,17 +1243,16 @@ ball was her favorite plaything.}%
 
 \ExplSyntaxOn
 \seq_new:N \after_hyperref_hook
-\seq_put_right:Nn \after_hyperref_hook {\RequirePackage{algorithm2e}}
 \seq_put_right:Nn \after_hyperref_hook {\RequirePackage{fancyhdr}}
 \clist_new:N \afterhyperpackages
-\clist_gset:Nn \afterhyperpackages {algorithm2e,fancyhdr,datetime,scrtime,datenumber,}
+\clist_gset:Nn \afterhyperpackages {fancyhdr,datetime,scrtime,datenumber,}
 \ExplSyntaxOff
 %%  \bibliographystyle{cambridgeauthordate}
 %% \bibsection\parindent \z@\bibpreamble\bibfont\list
 \ExplSyntaxOn
 \clist_new:N \after_hyperref_hook_clist
 \clist_gset:Nn \after_hyperref_hook_clist
- {algorithm2e, fancyhdr, datetime, scrtime, datenumber}
+ {fancyhdr, datetime, scrtime, datenumber}
 
 \cs_new:Npn \AfterHyperrefHook
 {%
@@ -1324,7 +1294,7 @@ ball was her favorite plaything.}%
     %%\RequirePackage{algorithms}
  }
  {\typeout{Algorithm loaded}}
-  \RequirePackage{algorithm2e}
+ % \RequirePackage{algorithm2e}
 \ExplSyntaxOn
 \cs_if_exist:cTF {printindex}
   { }
@@ -1332,11 +1302,13 @@ ball was her favorite plaything.}%
     \RequirePackage{makeidx}[2000/03/29]
   }
 \RequirePackage{multicol}
+\RequirePackage{cancel}
 
 \newif\ifULEM
 \IfStyFileExists{ulem}
 {\ULEMtrue\RequirePackage[normalem]{ulem}}
 {}
+\RequirePackage[normalem]{ulem}
 \newif\ifhaveslashed
 \IfStyFileExists*{slashed}
   {\haveslashedtrue\RequirePackage{slashed}}
@@ -1353,21 +1325,6 @@ ball was her favorite plaything.}%
 \newcommand\STAVE{\pkgname{staves}}
 \IfStyFileExists{staves}
   {\STAVEtrue\usepackage{staves}}
-  {}
-\newif\ifSHUF
-\newcommand\SHUF{\pkgname{shuffle}}
-\IfStyFileExists{shuffle}
-  {\let\origDeclareSymbolFont=\DeclareSymbolFont
-   \let\origDeclareMathSymbol=\DeclareMathSymbol
-   \renewcommand{\DeclareSymbolFont}[5]{}
-   \renewcommand{\DeclareMathSymbol}[4]{%
-     \DeclareRobustCommand{##1}{{\usefont{U}{shuffle}{m}{n}\char##4\relax}}
-   }
-   \SHUFtrue
-   \RequirePackage{shuffle}
-   \let\DeclareSymbolFont=\origDeclareSymbolFont
-   \let\DeclareMathSymbol=\origDeclareMathSymbol
-  }
   {}
 \RequirePackage{framed}
 \RequirePackage{varioref}
@@ -1558,7 +1515,7 @@ ball was her favorite plaything.}%
   \newfontfamily\PHtitl[Script=Greek,RawFeature=+titl;grek]{Philokalia-Regular}
 \fi
 \def\diacritic#1{{#1\LARGE ῾◌◌\char"0375}}
-\newfontfamily\greek[Script=Greek,Scale=1.0]{Arial Unicode MS}
+\newfontfamily\greek[Script=Greek,Scale=1.0]{Arial}
 \def\greektext#1{\greek{#1}}
  \newsavebox{\philobox}
  \savebox{\philobox}{\PHtitl Π}
